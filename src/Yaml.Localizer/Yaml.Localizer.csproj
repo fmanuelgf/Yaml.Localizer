@@ -11,12 +11,13 @@
     <Authors>Francisco González</Authors>
     <Version>$(Package-Version)</Version>
     <Description>
+      Tool for managing localized texts via a YAML configuration file.
     </Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl></RepositoryUrl> 
+    <RepositoryUrl>https://github.com/fmanuelgf/Yaml.Localizer</RepositoryUrl> 
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/fmanuelgf/Yaml.Localizer/blob/main/CHANGELOG.md</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
