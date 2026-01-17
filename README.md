@@ -13,13 +13,11 @@ using Yaml.Localizer.DependencyInjection;
 ...
 
 services.RegisterYamlLocalizer("{path-to-the-yaml-file}.yaml");
-
 ```
 
 Ensure the YAML file has the correct format.
 
 ```yml
-
 - Id: "{message-id}}"
   Messages:
     {iso-code}: "{text}"
@@ -29,7 +27,6 @@ Ensure the YAML file has the correct format.
 >*Example*
 
 ```yaml
-
 - Id: "MSG_GREETING"
   Messages:
     es: "Hola"
@@ -48,7 +45,6 @@ Ensure the YAML file has the correct format.
     en: |
       This is a
       multiline message
-
 ```
 
 Then, in order to get a translated text for your app's current culture, you can do as in this example:
@@ -56,7 +52,6 @@ Then, in order to get a translated text for your app's current culture, you can 
 >*Example*
 
 ```csharp
-
 public class ExampleClass
 {
     private readonly YamlLocalizer ymlLocalizer;
@@ -71,5 +66,4 @@ public class ExampleClass
         return this.ymlLocalizer[msgId];
     }
 }
-
 ```
