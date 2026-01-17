@@ -1,5 +1,5 @@
 # Yaml.Localizer
 
-## Release 10.1.0
+## Release 10.0.0
 
 - First commit
