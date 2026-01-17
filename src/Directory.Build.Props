@@ -1,0 +1,14 @@
+<Project>
+  <!-- See https://aka.ms/dotnet/msbuild/customize for more details on customizing your build -->
+  <PropertyGroup>
+    <Target-Framework-Version>net10.0</Target-Framework-Version>
+    <Package-Version>10.0.0</Package-Version>
+    <YamlDotNet>16.3.*</YamlDotNet>
+    <Microsoft-Extensions-DependencyInjection>10.0.*</Microsoft-Extensions-DependencyInjection>
+    <Coverlet-Collector>6.0.*</Coverlet-Collector>
+    <Microsoft-NET-Test-Sdk>18.0.*</Microsoft-NET-Test-Sdk>
+    <NUnit>4.4.*</NUnit>
+    <NUnit-Analyzers>4.11.*</NUnit-Analyzers>
+    <NUnit3TestAdapter>6.0.*</NUnit3TestAdapter>
+  </PropertyGroup>
+</Project>

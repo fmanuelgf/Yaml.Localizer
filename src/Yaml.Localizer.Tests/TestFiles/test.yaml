@@ -1,0 +1,18 @@
+- Id: "MSG_GREETING"
+  Messages:
+    es: "Hola"
+    en: "Hello"
+
+- Id: "MSG_GOODBYE"
+  Messages:
+    es: "Adiós"
+    en: "Goodbye"
+
+- Id: "MSG_MULTILINE_TEXT"
+  Messages:
+    es: |
+      Esto es un mensaje con
+      múltiples líneas
+    en: |
+      This is a
+      multiline message
