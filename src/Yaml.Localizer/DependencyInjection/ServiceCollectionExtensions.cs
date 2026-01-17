@@ -4,7 +4,7 @@
 
     public static class ServiceCollectionExtensions
     {
-        public static void RegisterYmlLocalizer(this IServiceCollection services, string yamlFilePath)
+        public static void RegisterYamlLocalizer(this IServiceCollection services, string yamlFilePath)
         {
             services.AddSingleton(sp => new YamlLocalizer(yamlFilePath));
         }

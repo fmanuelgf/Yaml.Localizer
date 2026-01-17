@@ -12,7 +12,7 @@ using Yaml.Localizer.DependencyInjection;
 
 ...
 
-services.RegisterYmlLocalizer("{path-to-the-yaml-file}.yaml");
+services.RegisterYamlLocalizer("{path-to-the-yaml-file}.yaml");
 
 ```
 

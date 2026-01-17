@@ -13,7 +13,7 @@
         public void Setup()
         {
             var services = new ServiceCollection();
-            services.RegisterYmlLocalizer("TestFiles/test.yaml");
+            services.RegisterYamlLocalizer("TestFiles/test.yaml");
             var provider = services.BuildServiceProvider();
             this.ymlLocalizer = provider.GetRequiredService<YamlLocalizer>();
         }
