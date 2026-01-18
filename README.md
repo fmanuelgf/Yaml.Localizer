@@ -5,7 +5,7 @@ A tool for managing localized texts via a YAML configuration file.
 
 ## Usage
 
-First, register the YamlLocalizer in the services collection.
+First, register `YamlLocalizer` in the services collection.
 
 ```csharp
 using Yaml.Localizer.DependencyInjection;
@@ -54,16 +54,16 @@ Then, in order to get a translated text for your app's current culture, you can 
 ```csharp
 public class ExampleClass
 {
-    private readonly YamlLocalizer ymlLocalizer;
+    private readonly YamlLocalizer yamlLocalizer;
 
-    public ExampleClass(YamlLocalizer ymlLocalizer)
+    public ExampleClass(YamlLocalizer yamlLocalizer)
     {
-        this.ymlLocalizer = ymlLocalizer;
+        this.yamlLocalizer = yamlLocalizer;
     }
 
     public string GetTranslatedMessage(string msgId)
     {
-        return this.ymlLocalizer[msgId];
+        return this.yamlLocalizer[msgId];
     }
 }
 ```
