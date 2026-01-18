@@ -7,7 +7,7 @@
 
     public class UnitTests
     {
-        private YamlLocalizer ymlLocalizer;
+        private YamlLocalizer yamlLocalizer;
 
         [SetUp]
         public void Setup()
@@ -15,7 +15,7 @@
             var services = new ServiceCollection();
             services.RegisterYamlLocalizer("TestFiles/test.yaml");
             var provider = services.BuildServiceProvider();
-            this.ymlLocalizer = provider.GetRequiredService<YamlLocalizer>();
+            this.yamlLocalizer = provider.GetRequiredService<YamlLocalizer>();
         }
 
         [TestCase("es", "MSG_GREETING", "Hola")]
@@ -34,7 +34,7 @@
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
             
             // Act
-            var result = this.ymlLocalizer[msgId];
+            var result = this.yamlLocalizer[msgId];
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));
@@ -51,7 +51,7 @@
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
             
             // Act
-            var result = this.ymlLocalizer[msgId];
+            var result = this.yamlLocalizer[msgId];
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));
@@ -68,7 +68,7 @@
             // Assert
             Assert.Throws<KeyNotFoundException>(() =>
             {
-                _ = this.ymlLocalizer[msgId];
+                _ = this.yamlLocalizer[msgId];
             });
         }
     }
