@@ -1,0 +1,23 @@
+- Id: "MSG_GREETING"
+  Messages:
+    es-ES: "Hola desde ES"
+    en-GB: "Hello from UK"
+    en-US: "Hello from US"
+
+- Id: "MSG_GOODBYE"
+  Messages:
+    es-ES: "Adiós desde ES"
+    en-GB: "Goodbye from UK"
+    en-US: "Goodbye from US"
+
+- Id: "MSG_MULTILINE_TEXT"
+  Messages:
+    es-ES: |
+      Esto es un mensaje desde ES con
+      múltiples líneas
+    en-GB: |
+      This is a
+      multiline UK message
+    en-US: |
+      This is a
+      multiline US message

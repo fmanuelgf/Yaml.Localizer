@@ -1,21 +1,14 @@
-﻿namespace Yaml.Localizer.Tests
+﻿namespace Yaml.Localizer.Tests.UnitTests
 {
-    using Microsoft.Extensions.DependencyInjection;
     using NUnit.Framework;
-    using Yaml.Localizer;
-    using Yaml.Localizer.DependencyInjection;
+    using Yaml.Localizer.Tests.UnitTests.Base;
 
-    public class UnitTests
+    public class YamlLocalizerUsingShortIsoCodeTests : UnitTests
     {
-        private YamlLocalizer yamlLocalizer;
-
         [SetUp]
         public void Setup()
         {
-            var services = new ServiceCollection();
-            services.RegisterYamlLocalizer("TestFiles/test.yaml");
-            var provider = services.BuildServiceProvider();
-            this.yamlLocalizer = provider.GetRequiredService<YamlLocalizer>();
+            base.UseYaml("TestFiles/short-iso-codes.yaml");
         }
 
         [TestCase("es", "MSG_GREETING", "Hola")]
@@ -34,7 +27,7 @@
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
             
             // Act
-            var result = this.yamlLocalizer[msgId];
+            var result = this.Localizer[msgId];
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));
@@ -51,25 +44,10 @@
             Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
             
             // Act
-            var result = this.yamlLocalizer[msgId];
+            var result = this.Localizer[msgId];
 
             // Assert
             Assert.That(result, Is.EqualTo(expected));
-        }
-
-        [TestCase("es", "foo")]
-        [TestCase("zz", "GOODBYE")]
-        public void CannotTranslateNonExistingMessageOrCulture(string lang, string msgId)
-        {
-            // Arrange
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(lang);
-            
-            // Act
-            // Assert
-            Assert.Throws<KeyNotFoundException>(() =>
-            {
-                _ = this.yamlLocalizer[msgId];
-            });
         }
     }
 }

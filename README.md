@@ -20,7 +20,8 @@ Ensure the YAML file has the correct format.
 ```yml
 - Id: "{message-id}}"
   Messages:
-    {iso-code}: "{text}"
+    {iso-code1}: "{text1}"
+    {iso-code2}: "{text2}"
     ...
 ```
 
@@ -54,16 +55,16 @@ Then, in order to get a translated text for your app's current culture, you can 
 ```csharp
 public class ExampleClass
 {
-    private readonly YamlLocalizer yamlLocalizer;
+    private readonly YamlLocalizer localizer;
 
-    public ExampleClass(YamlLocalizer yamlLocalizer)
+    public ExampleClass(YamlLocalizer localizer)
     {
-        this.yamlLocalizer = yamlLocalizer;
+        this.localizer = localizer;
     }
 
     public string GetTranslatedMessage(string msgId)
     {
-        return this.yamlLocalizer[msgId];
+        return this.localizer[msgId];
     }
 }
 ```

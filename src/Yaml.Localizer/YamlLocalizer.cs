@@ -24,11 +24,12 @@ namespace Yaml.Localizer
             var data = this.translationMappings.FirstOrDefault(t => t.Id == id)
                 ?? throw new KeyNotFoundException($"Translation ID '{id}' not found.");
 
-            var currentCultureISO = 
-                Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+            var currentCulture = Thread.CurrentThread.CurrentCulture;
             
             var result = data.Messages.FirstOrDefault(c =>
-                c.Key.TwoLetterISOLanguageName == currentCultureISO
+                c.Key.TextInfo.EBCDICCodePage == currentCulture.TextInfo.EBCDICCodePage
+            ).Value ?? data.Messages.FirstOrDefault(c =>
+                c.Key.TwoLetterISOLanguageName == currentCulture.TwoLetterISOLanguageName
             ).Value;
             
             return result ?? throw new KeyNotFoundException(
