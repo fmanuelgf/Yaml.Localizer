@@ -1,6 +1,7 @@
 namespace Yaml.Localizer
 {
     using Yaml.Localizer.Models;
+    using YamlDotNet.Serialization;
 
     public class YamlLocalizer
     {
@@ -12,7 +13,7 @@ namespace Yaml.Localizer
             var input = reader.ReadToEnd();
             reader.Close();
 
-            var deserializer = new YamlDotNet.Serialization.DeserializerBuilder().Build();
+            var deserializer = new DeserializerBuilder().Build();
             this.translationMappings = deserializer.Deserialize<List<MessageTranslations>>(input);
         }
 

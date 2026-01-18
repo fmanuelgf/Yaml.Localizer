@@ -1,7 +1,7 @@
 <Project>
   <!-- See https://aka.ms/dotnet/msbuild/customize for more details on customizing your build -->
   <PropertyGroup>
-    <Target-Framework-Version>net10.0</Target-Framework-Version>
+    <TargetFramework>net10.0</TargetFramework>
     <Package-Version>10.0.1</Package-Version>
     <YamlDotNet>16.3.*</YamlDotNet>
     <Microsoft-Extensions-DependencyInjection>10.0.*</Microsoft-Extensions-DependencyInjection>
