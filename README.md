@@ -1,7 +1,7 @@
 
 # Yaml.Localizer
 
-A tool for managing localized texts via a YAML configuration file.
+A tool for managing localized texts via a YAML definition file.
 
 ## Usage
 

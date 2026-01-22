@@ -11,7 +11,7 @@
     <Authors>Francisco González</Authors>
     <Version>$(Package-Version)</Version>
     <Description>
-      Tool for managing localized texts via a YAML configuration file.
+      Tool for managing localized texts via a YAML definition file.
     </Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
