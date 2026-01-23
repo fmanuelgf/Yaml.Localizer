@@ -13,7 +13,7 @@ namespace Yaml.Localizer
         /// <summary>
         /// Initializes a new instance of the <see cref="YamlLocalizer"/> class.
         /// </summary>
-        /// <param name="yamlFilePath">File path to the YAML localization file.</param>
+        /// <param name="yamlFilePath">Path to the YAML file containing the translations.</param>
         public YamlLocalizer(string yamlFilePath)
         {
             var reader = File.OpenText(yamlFilePath);
@@ -25,9 +25,9 @@ namespace Yaml.Localizer
         }
 
         /// <summary>
-        /// Gets the localized string for the specified translation ID.
+        /// Gets the localized string for the specified message ID.
         /// </summary>
-        /// <param name="id">The translation ID.</param>
+        /// <param name="id">The message ID.</param>
         /// <returns>The localized string.</returns>
         public string this[string id] => this.GetTranslation(id);
 

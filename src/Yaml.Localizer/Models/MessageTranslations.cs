@@ -8,12 +8,12 @@ namespace Yaml.Localizer.Models
     public class MessageTranslations
     {
         /// <summary>
-        /// Gets or sets the translation ID.
+        /// Gets or sets the message ID.
         /// </summary>
         public string Id { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the dictionary of messages with their corresponding cultures.
+        /// Gets or sets the dictionary of culture-translation for the message ID.
         /// </summary>
         public Dictionary<CultureInfo, string> Messages { get; set; } = [];
     }
