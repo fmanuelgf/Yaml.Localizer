@@ -1,5 +1,9 @@
 # Yaml.Localizer
 
+## Release 10.0.3
+
+- Update nuget packages
+
 ## Release 10.0.2
 
 - Fixes
