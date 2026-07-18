@@ -9,7 +9,6 @@ namespace Yaml.Localizer
     /// </summary>
     public class YamlLocalizer
     {
-        private static CultureInfo culture = CultureInfo.CurrentCulture;
         private readonly CultureInfo defaultCulture = CultureInfo.CurrentCulture;
         private readonly List<MessageTranslations> translationMappings;
 
@@ -32,11 +31,7 @@ namespace Yaml.Localizer
         /// <summary>
         /// Gets or sets the current culture for localization.
         /// </summary>
-        public CultureInfo CurrentCulture
-        {
-            get => culture;
-            set => culture = value;
-        }
+        public CultureInfo CurrentCulture { get; set;} = CultureInfo.CurrentCulture;
 
         /// <summary>
         /// Gets the localized string for the specified message ID.
@@ -51,13 +46,13 @@ namespace Yaml.Localizer
                 ?? throw new KeyNotFoundException($"Translation ID '{id}' not found.");
 
             var result = data.Messages.FirstOrDefault(c =>
-                c.Key.TextInfo.CultureName == culture.TextInfo.CultureName
+                c.Key.TextInfo.CultureName == this.CurrentCulture.TextInfo.CultureName
             ).Value ?? data.Messages.FirstOrDefault(c =>
-                c.Key.TwoLetterISOLanguageName == culture.TwoLetterISOLanguageName
+                c.Key.TwoLetterISOLanguageName == this.CurrentCulture.TwoLetterISOLanguageName
             ).Value ?? data.Messages.FirstOrDefault().Value;
             
             return result ?? throw new KeyNotFoundException(
-                $"Translation for language '{culture}' or default culture '{this.defaultCulture}' not found.");
+                $"Translation for language '{this.CurrentCulture}' or default culture '{this.defaultCulture}' not found.");
         }
     }
 } 
