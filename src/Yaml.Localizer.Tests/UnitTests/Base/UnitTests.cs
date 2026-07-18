@@ -1,5 +1,6 @@
 namespace Yaml.Localizer.Tests.UnitTests.Base
 {
+    using System.Globalization;
     using Microsoft.Extensions.DependencyInjection;
     using NUnit.Framework;
     using Yaml.Localizer.DependencyInjection;
@@ -18,10 +19,10 @@ namespace Yaml.Localizer.Tests.UnitTests.Base
 
         [TestCase("es", "foo")]
         [TestCase("zz", "GOODBYE")]
-        public void CannotTranslateNonExistingMessageOrCulture(string lang, string msgId)
+        public void CannotTranslateNonExistingMessage(string lang, string msgId)
         {
             // Arrange
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(lang);
+            this.Localizer.CurrentCulture = new CultureInfo(lang);
             
             // Act
             // Assert

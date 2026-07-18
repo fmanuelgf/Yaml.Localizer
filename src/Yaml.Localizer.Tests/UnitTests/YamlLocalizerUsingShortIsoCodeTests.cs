@@ -1,5 +1,6 @@
 ﻿namespace Yaml.Localizer.Tests.UnitTests
 {
+    using System.Globalization;
     using NUnit.Framework;
     using Yaml.Localizer.Tests.UnitTests.Base;
 
@@ -24,7 +25,21 @@
         public void CanTranslateExistingMessage(string culture, string msgId, string expected)
         {
             // Arrange
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
+            this.Localizer.CurrentCulture = new CultureInfo(culture);
+            
+            // Act
+            var result = this.Localizer[msgId];
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("fr-FR", "MSG_GREETING", "Hola")]
+        [TestCase("ch-CH", "MSG_GOODBYE", "Adiós")]
+        public void CanTranslateExistingMessageToDefaultCulture(string culture, string msgId, string expected)
+        {
+            // Arrange
+            this.Localizer.CurrentCulture = new CultureInfo(culture);
             
             // Act
             var result = this.Localizer[msgId];
@@ -41,7 +56,7 @@
         public void CanTranslateExistingMultilineMessage(string culture, string msgId, string expected)
         {
             // Arrange
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
+            this.Localizer.CurrentCulture = new CultureInfo(culture);
             
             // Act
             var result = this.Localizer[msgId];

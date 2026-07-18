@@ -1,18 +1,24 @@
 # Yaml.Localizer
 
+## Release 10.1.0
+
+- New `CurrentCulture` property to be used as the selected culture.
+- Set the first `iso-code` of the first `message-id` as the default culture.
+- Update the NuGet packages.
+
 ## Release 10.0.4
 
-- Update nuget packages
+- Update the NuGet packages.
 
 ## Release 10.0.3
 
-- Update nuget packages
+- Update the NuGet packages.
 
 ## Release 10.0.2
 
-- Fixes
-- Tests improvement
+- Fixes.
+- Tests improvement.
 
 ## Release 10.0.1
 
-- First commit
+- First commit.

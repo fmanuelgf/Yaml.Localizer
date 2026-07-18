@@ -16,9 +16,10 @@ services.RegisterYamlLocalizer("{path-to-the-yaml-file}.yaml");
 ```
 
 Ensure the YAML file has the correct format.
+NOTE: The default culture will be the first `iso-code` of the first `message-id`.
 
 ```yml
-- Id: "{message-id}}"
+- Id: "{message-id}"
   Messages:
     {iso-code1}: "{text1}"
     {iso-code2}: "{text2}"
@@ -53,18 +54,18 @@ Then, in order to get a translated text for your app's current culture, you can 
 >*Example*
 
 ```csharp
-public class ExampleClass
+[TestCase("es", "MSG_GREETING", "Hola")]
+[TestCase("en", "MSG_GREETING", "Hello")]
+[TestCase("en-GB", "MSG_GOODBYE", "Goodbye")]
+public void CanTranslateExistingMessage(string culture, string msgId, string expected)
 {
-    private readonly YamlLocalizer localizer;
+    // Arrange
+    this.Localizer.CurrentCulture = new CultureInfo(culture);
+    
+    // Act
+    var result = this.Localizer[msgId];
 
-    public ExampleClass(YamlLocalizer localizer)
-    {
-        this.localizer = localizer;
-    }
-
-    public string GetTranslatedMessage(string msgId)
-    {
-        return this.localizer[msgId];
-    }
+    // Assert
+    Assert.That(result, Is.EqualTo(expected));
 }
 ```

@@ -1,5 +1,6 @@
 namespace Yaml.Localizer
 {
+    using System.Globalization;
     using Yaml.Localizer.Models;
     using YamlDotNet.Serialization;
 
@@ -8,6 +9,8 @@ namespace Yaml.Localizer
     /// </summary>
     public class YamlLocalizer
     {
+        private static CultureInfo culture = CultureInfo.CurrentCulture;
+        private readonly CultureInfo defaultCulture = CultureInfo.CurrentCulture;
         private readonly List<MessageTranslations> translationMappings;
 
         /// <summary>
@@ -22,6 +25,17 @@ namespace Yaml.Localizer
 
             var deserializer = new DeserializerBuilder().Build();
             this.translationMappings = deserializer.Deserialize<List<MessageTranslations>>(input);
+            this.defaultCulture = this.translationMappings.FirstOrDefault()?.Messages.Keys.FirstOrDefault()
+                ?? CultureInfo.CurrentCulture;
+        }
+
+        /// <summary>
+        /// Gets or sets the current culture for localization.
+        /// </summary>
+        public CultureInfo CurrentCulture
+        {
+            get => culture;
+            set => culture = value;
         }
 
         /// <summary>
@@ -36,16 +50,14 @@ namespace Yaml.Localizer
             var data = this.translationMappings.FirstOrDefault(t => t.Id == id)
                 ?? throw new KeyNotFoundException($"Translation ID '{id}' not found.");
 
-            var currentCulture = Thread.CurrentThread.CurrentCulture;
-            
             var result = data.Messages.FirstOrDefault(c =>
-                c.Key.TextInfo.EBCDICCodePage == currentCulture.TextInfo.EBCDICCodePage
+                c.Key.TextInfo.CultureName == culture.TextInfo.CultureName
             ).Value ?? data.Messages.FirstOrDefault(c =>
-                c.Key.TwoLetterISOLanguageName == currentCulture.TwoLetterISOLanguageName
-            ).Value;
+                c.Key.TwoLetterISOLanguageName == culture.TwoLetterISOLanguageName
+            ).Value ?? data.Messages.FirstOrDefault().Value;
             
             return result ?? throw new KeyNotFoundException(
-                $"Translation for language '{Thread.CurrentThread.CurrentCulture}' not found.");
+                $"Translation for language '{culture}' or default culture '{this.defaultCulture}' not found.");
         }
     }
 } 
