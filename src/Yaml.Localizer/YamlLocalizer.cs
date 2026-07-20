@@ -49,7 +49,7 @@ namespace Yaml.Localizer
                 c.Key.TextInfo.CultureName == this.CurrentCulture.TextInfo.CultureName
             ).Value ?? data.Messages.FirstOrDefault(c =>
                 c.Key.TwoLetterISOLanguageName == this.CurrentCulture.TwoLetterISOLanguageName
-            ).Value ?? data.Messages.FirstOrDefault().Value;
+            ).Value ?? data.Messages.FirstOrDefault(c => c.Key == this.defaultCulture).Value;
             
             return result ?? throw new KeyNotFoundException(
                 $"Translation for language '{this.CurrentCulture}' or default culture '{this.defaultCulture}' not found.");
