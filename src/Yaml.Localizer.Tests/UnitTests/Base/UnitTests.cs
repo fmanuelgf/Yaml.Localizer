@@ -9,7 +9,7 @@ namespace Yaml.Localizer.Tests.UnitTests.Base
     {
         protected YamlLocalizer Localizer { get; private set; }
 
-        public void UseYaml(string yamlFilePath)
+        protected void UseYaml(string yamlFilePath)
         {
             var services = new ServiceCollection();
             services.RegisterYamlLocalizer(yamlFilePath);
