@@ -60,7 +60,7 @@ Then, in order to get a translated text for your app's current culture, you can 
 public void CanTranslateExistingMessage(string culture, string msgId, string expected)
 {
     // Arrange
-    this.Localizer.CurrentCulture = new CultureInfo(culture);
+    this.Localizer.UseCultureOrDefault(culture);
     
     // Act
     var result = this.Localizer[msgId];
