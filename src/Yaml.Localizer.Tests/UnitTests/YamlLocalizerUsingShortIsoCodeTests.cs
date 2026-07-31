@@ -25,7 +25,7 @@
         public void CanTranslateExistingMessage(string culture, string msgId, string expected)
         {
             // Arrange
-            this.Localizer.CurrentCulture = new CultureInfo(culture);
+            this.Localizer.UseCultureOrDefault(culture);
             
             // Act
             var result = this.Localizer[msgId];
@@ -39,7 +39,7 @@
         public void CanTranslateExistingMessageToDefaultCulture(string culture, string msgId, string expected)
         {
             // Arrange
-            this.Localizer.CurrentCulture = new CultureInfo(culture);
+            this.Localizer.UseCultureOrDefault(culture);
             
             // Act
             var result = this.Localizer[msgId];
@@ -56,7 +56,7 @@
         public void CanTranslateExistingMultilineMessage(string culture, string msgId, string expected)
         {
             // Arrange
-            this.Localizer.CurrentCulture = new CultureInfo(culture);
+            this.Localizer.UseCultureOrDefault(culture);
             
             // Act
             var result = this.Localizer[msgId];

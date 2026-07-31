@@ -1,6 +1,5 @@
 namespace Yaml.Localizer.Tests.UnitTests.Base
 {
-    using System.Globalization;
     using Microsoft.Extensions.DependencyInjection;
     using NUnit.Framework;
     using Yaml.Localizer.DependencyInjection;
@@ -22,7 +21,7 @@ namespace Yaml.Localizer.Tests.UnitTests.Base
         public void CannotTranslateNonExistingMessage(string lang, string msgId)
         {
             // Arrange
-            this.Localizer.CurrentCulture = new CultureInfo(lang);
+            this.Localizer.UseCultureOrDefault(lang);
             
             // Act
             // Assert
