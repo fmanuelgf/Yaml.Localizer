@@ -1,8 +1,9 @@
 # Yaml.Localizer
 
-## Release 10.2.0
+## Release 10.2.1
 
 - New method `UseCultureOrDefault`.
+- New readonly property `SelectedCulture`.
 - The `CurrentCulture` property is deprecated.
 
 ## Release 10.1.1

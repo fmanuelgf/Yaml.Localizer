@@ -55,6 +55,11 @@ namespace Yaml.Localizer
         }
 
         /// <summary>
+        /// Gets the current culture for localization.
+        /// </summary>
+        public CultureInfo SelectedCulture => this.currentCulture;
+
+        /// <summary>
         /// Sets the specified valid locale; otherwise, the default value will be used.
         /// </summary>
         /// <param name="lang">The ISO code for the locale.</param>
