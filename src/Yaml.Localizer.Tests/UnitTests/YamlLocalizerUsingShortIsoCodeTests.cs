@@ -1,6 +1,5 @@
 ﻿namespace Yaml.Localizer.Tests.UnitTests
 {
-    using System.Globalization;
     using NUnit.Framework;
     using Yaml.Localizer.Tests.UnitTests.Base;
 
