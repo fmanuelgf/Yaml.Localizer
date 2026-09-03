@@ -1,5 +1,10 @@
 # Yaml.Localizer
 
+## Release 10.3.0
+
+- The `CurrentCulture` property has been removed.
+- Update the NuGet packages.
+
 ## Release 10.2.1
 
 - New method `UseCultureOrDefault`.

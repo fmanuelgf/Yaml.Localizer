@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Yaml.Localizer.Tests/Yaml.Localizer.Tests.csproj" />
+  <Project Path="Yaml.Localizer/Yaml.Localizer.csproj" />
+</Solution>

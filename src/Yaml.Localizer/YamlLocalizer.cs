@@ -11,7 +11,6 @@ namespace Yaml.Localizer
     {
         private readonly CultureInfo defaultCulture;
         private readonly List<MessageTranslations> translationMappings;
-        private CultureInfo currentCulture;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="YamlLocalizer"/> class.
@@ -28,7 +27,7 @@ namespace Yaml.Localizer
             this.defaultCulture = this.translationMappings.FirstOrDefault()?.Messages.Keys.FirstOrDefault()
                 ?? CultureInfo.CurrentCulture;
 
-            this.currentCulture = defaultCulture;
+            this.SelectedCulture = defaultCulture;
         }
 
         /// <summary>
@@ -39,25 +38,9 @@ namespace Yaml.Localizer
         public string this[string id] => this.GetTranslation(id);
 
         /// <summary>
-        /// Gets or sets the current culture for localization.
-        /// </summary>
-        [Obsolete("This propery will be removed in future releases. Please use the 'UseCultureOrDefault' method instead.")]
-        public CultureInfo CurrentCulture
-        {
-            get
-            {
-                return this.currentCulture;
-            }
-            set
-            {
-                this.currentCulture = value;
-            }
-        }
-
-        /// <summary>
         /// Gets the current culture for localization.
         /// </summary>
-        public CultureInfo SelectedCulture => this.currentCulture;
+        public CultureInfo SelectedCulture { get;  private set; }
 
         /// <summary>
         /// Sets the specified valid locale; otherwise, the default value will be used.
@@ -67,13 +50,13 @@ namespace Yaml.Localizer
         {
             try
             {
-                this.currentCulture = string.IsNullOrEmpty(lang)
+                this.SelectedCulture = string.IsNullOrEmpty(lang)
                     ? this.defaultCulture
                     : new CultureInfo(lang);
             }
             catch
             {
-                this.currentCulture = this.defaultCulture;
+                this.SelectedCulture = this.defaultCulture;
             }
         }
 
@@ -83,13 +66,13 @@ namespace Yaml.Localizer
                 ?? throw new KeyNotFoundException($"Translation ID '{id}' not found.");
 
             var result = data.Messages.FirstOrDefault(c =>
-                c.Key.TextInfo.CultureName == this.currentCulture.TextInfo.CultureName
+                c.Key.TextInfo.CultureName == this.SelectedCulture.TextInfo.CultureName
             ).Value ?? data.Messages.FirstOrDefault(c =>
-                c.Key.TwoLetterISOLanguageName == this.currentCulture.TwoLetterISOLanguageName
+                c.Key.TwoLetterISOLanguageName == this.SelectedCulture.TwoLetterISOLanguageName
             ).Value ?? data.Messages.FirstOrDefault(c => c.Key == this.defaultCulture).Value;
             
             return result ?? throw new KeyNotFoundException(
-                $"Translation for language '{this.currentCulture}' or default culture '{this.defaultCulture}' not found.");
+                $"Translation for language '{this.SelectedCulture}' or default culture '{this.defaultCulture}' not found.");
         }
     }
 } 
