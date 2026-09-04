@@ -16,7 +16,8 @@ services.RegisterYamlLocalizer("{path-to-the-yaml-file}.yaml");
 ```
 
 Ensure the YAML file has the correct format.
-NOTE: The default culture will be the first `iso-code` of the first `message-id`.
+
+**NOTE:** The default culture will be the first `iso-code` of the first `message-id`.
 
 ```yml
 - Id: "{message-id}"
